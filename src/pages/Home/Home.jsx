@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import restCountries from "./../../services/api";
 import { CountryCard } from "../../components/countryCard";
 import "./style.css";
-import logo from "./../../assets/power2goLogo.png";import { toast, ToastContainer } from 'react-toastify';
+import logo from "./../../assets/power2goLogo.png";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 function Home() {
   // Estado para controlar a entrada do usuário na barra de pesquisa
@@ -29,10 +29,6 @@ function Home() {
 
   // Função para buscar um país por nome
   async function buscarPais() {
-
-    
-
-
     const data = await restCountries(countryBar);
     console.log(data)
     if (data && data.length > 0) {
@@ -45,15 +41,9 @@ function Home() {
       );
       // Define os países encontrados para exibição
       setCountries(data);
-    }else
-    {
-      toast.error('Pais nao encontrado');
+    } else {
+      toast.error('País não encontrado');
     }
-  }
-
-  // Função para buscar um país por nome a partir do histórico de pesquisas
-  function handleHistoryItemClick(historyItem) {
-    buscarPaisArg(historyItem);
   }
 
   // Função para buscar um país por nome a partir do histórico de pesquisas
@@ -67,6 +57,11 @@ function Home() {
       );
       setCountries(data);
     }
+  }
+
+  // Função para buscar um país por nome a partir do histórico de pesquisas
+  function handleHistoryItemClick(historyItem) {
+    buscarPaisArg(historyItem);
   }
 
   return (
